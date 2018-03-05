@@ -7,6 +7,30 @@
 <link rel="stylesheet" href="WeddingStyle.css">
 <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
+<script>
+    window.smoothScroll = function(target) {
+    var scrollContainer = target;
+    do { //find scroll container
+        scrollContainer = scrollContainer.parentNode;
+        if (!scrollContainer) return;
+        scrollContainer.scrollTop += 1;
+    } while (scrollContainer.scrollTop == 0);
+
+    var targetY = 0;
+    do { //find the top of target relatively to the container
+        if (target == scrollContainer) break;
+        targetY += target.offsetTop;
+    } while (target = target.offsetParent);
+
+    scroll = function(c, a, b, i) {
+        i++; if (i > 30) return;
+        c.scrollTop = a + (b - a) / 30 * i;
+        setTimeout(function(){ scroll(c, a, b, i); }, 20);
+    }
+    // start scrolling
+    scroll(scrollContainer, scrollContainer.scrollTop, targetY, 0);
+}
+</script>
 <style>
 body,div,h1,h2,h3,h4,h5 {font-family: "Dancing Script";}
 </style>
@@ -19,11 +43,13 @@ body,div,h1,h2,h3,h4,h5 {font-family: "Dancing Script";}
         <img src="PromPic.jpg">
         <div class="title-text">Ben and Polina <br> are getting married!</div>
         <div class="desc-text">Everett, WA</div>
+        <img src="scroll-down.gif" class="scroll-down"
+            onclick="smoothScroll(document.getElementById('startContent'))">
     </div>
     <!--End Heading-->
     
     <!--Left Column-->
-    <div class="col-left">
+    <div id="startContent" class="col-left">
         <h1 class="main-entry">Wedding Where and When</h1>
         <div class="side-entry">
             <p>Date: May 26th 2018</p>
