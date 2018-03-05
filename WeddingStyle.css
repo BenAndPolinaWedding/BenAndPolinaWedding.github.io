@@ -13,7 +13,6 @@ body {
 
 a   {
     background-color:transparent;
-    text-decoration: none;
     color: inherit;
 }
 
@@ -92,18 +91,34 @@ p,li {
     width: 100%;
     box-sizing: border-box;
     float: left;
+    grid-column-start: 1;
+    grid-column-end: 3;
 }
-
-.col-right {
+@media only screen and (min-width: 600px) {
+    /* For tablets: */
+    .col-right {
     grid-column-start: 2;
     grid-column-end: 3;
     grid-row: 2;
-}
-
-.col-left {
+    }
+    .col-left {
     grid-column-start: 1;
     grid-column-end: 2;
     grid-row: 2;
+    }
+}
+@media only screen and (min-width: 768px) {
+    /* For desktop: */
+    .col-right {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row: 2;
+    }
+    .col-left {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row: 2;
+    }
 }
 
 .option-button {
@@ -184,5 +199,6 @@ p,li {
     box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
     background-color: #7a9b66;
     padding: 10px 10px 100px 10px;
-    height: 
+    overflow: hidden;
+    padding-bottom: 10px;
 }
